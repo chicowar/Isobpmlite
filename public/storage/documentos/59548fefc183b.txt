@@ -1,0 +1,49 @@
+Super admin (todo)
+
+Parners:
+Bloquear perfil Partner
+Filtro por empresa
+
+Admin:
+Quitar empresas 
+
+Usuario:
+Quitar menu de admin
+Quitar editar y eliminar  (Documentos)
+
+
+
+
+
+Crear un nuevo de Partners
+
+
+El Editar de informarcion documentada(Jona) OK
+
+Botones en archivos infDocumentada (Jona) OK
+
+No inserta lo de los permisos(Jona) OK
+
+Replicar el paginado(Jona) 
+
+Replicar que te  mantenga en la misma pagina(Jona) 
+
+
+
+
+
+Acomodar las graficas Dash de Objetivos(Arturo)
+
+Que no te borre todo al insetar en procesos(Chavez) Variable: {{ old('username') }}
+
+Validacion de archivos (arturo)
+
+Nombre de los archivos (Quejas)
+
+Validador de procesos el ZIP (chavez)
+
+Proyectos de mejora (Arturo)
+
+Boton de regresar(Arturo)
+
+Editar de Resultados(chavez)
