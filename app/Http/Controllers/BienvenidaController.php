@@ -87,29 +87,7 @@ class BienvenidaController extends Controller
 
     public function show()
     {
-      $usuarios = Auth::user();
-      $noticias = new Noticias;
-      $noticiasw = $noticias->where('id_empresa',$usuarios->id_compania)
-      ->where('fecha_creacion',date("Y-m-d"))->get();
-
-      $objetivos = new Objetivo;
-      $objetivo = $objetivos->where('id_compania',$usuarios->id_compania)->get();
-
-      $queja = new Quejas;
-      $quejas = $queja->where('idcompañia',$usuarios->id_compania)->get();
-
-      $procesos = new Proceso;
-      $proceso = $procesos->where('idcompañia',$usuarios->id_compania)->get();
-      if($usuarios->perfil == 1){
-        $empresas = new Empresas;
-        $empresa = $empresas->get();
-      }else{
-        $empresas = new Empresas;
-        $empresa = $empresas->where('id_creador',$usuarios->id)->get();
-      }
-
-
-      return View('bienvenida', compact('objetivo', 'quejas','proceso','empresa', 'noticiasw'));
+return View('bienvenida');
     }
 
     /**

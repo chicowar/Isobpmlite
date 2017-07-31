@@ -40,7 +40,7 @@
                       <td>  <?=$documentos['nombre']?></td>
                       <td>
                         <?=$documentos->archivo?>
-                        <a href="/storage/documentos/<?=$documentos->nombreunico?>" target="_blank" downloadFile="<?=$documentos->nombreunico?>" style='color:#FFF'>
+                        <a href="/documento/<?=$documentos->id?>" target="_blank" style='color:#FFF'>
                           <button type="button" class="btn btn-default">
                                <span class="glyphicon glyphicon-download-alt"></span>
                           </button>
@@ -104,25 +104,24 @@
               <form id="fileinfo" method="post">
 
               <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
-              <input  id="id">
+              <input type="hidden" id="id">
               <div class="container">
                 <div class="form-group form-group-lg">
                     <h2><label for="Usuario" class="control-label col-md-12">(*) Nombre:</label></h2>
-                    <div class="col-md-6">
-                        <input class="form-control input-lg" id="enombre" type="Text" placeholder="Nombre" name="enombre" required>
+                    <div class="col-md-6 col-sm-9">
+                        <input class="form-control input-lg" id="enombre" type="Text" placeholder="Nombre" name="enombre" readonly required>
                     </div>
                 </div>
                 <div class="form-group form-group-lg">
                   <h2><label for="tipo" class="control-label col-md-12" >(*) Descripcion:</label></h2>
-                  <div class="col-md-6">
-                    <input class="form-control input-lg" id="edescripcion" type="Text" placeholder="Agrega una descripcion del archivo" name="edescripcion" required>
+                  <div class="col-md-6 col-sm-9">
+                    <input class="form-control input-lg" id="edescripcion" type="Text" placeholder="Agrega una descripcion del archivo" readonly name="edescripcion" required>
                   </div>
                 </div>
                 <div class="form-group form-group-lg">
                   <h2><label for="Usuario" class="control-label col-md-12">(*) Archivo:</label></h2>
-                  <div class="col-md-6">
+                  <div class="col-md-6 col-sm-9">
                     <input class="form-control input-lg" id="earchivo" type="Text" readonly name="earchivo">
-                    <input class="form-control input-lg" id="aarchivo" type="file" placeholder="Elige el archivo" name="aarchivo">
                   </div>
                 </div>
                 <div class="form-group form-group-lg">
@@ -139,7 +138,7 @@
                                               </tr>
                                               <tr>
                                                   <td>
-                                                      <select multiple name="elistaUsuariosDisponibles[]"  id="elistaUsuariosDisponibles" size="7" style="width: 100%;" onclick="agregaSeleccion('elistaUsuariosDisponibles', 'elista_de_accesos');">
+                                                      <select multiple name="elistaUsuariosDisponibles[]"  id="elistaUsuariosDisponibles" size="7" style="width: 100%;" >
 
                                                       </select>
 
@@ -148,77 +147,12 @@
                                                   <table>
                                                       <tbody><tr>
                                                           <td>
-                                                              <input type="button" name="agregar todo" value=">>>" title="agregar todo" onclick="agregaTodo('elistaUsuariosDisponibles', 'elista_de_accesos');">
+                                                              <input type="button" name="agregar todo" value=">>>" title="agregar todo" >
                                                           </td>
                                                       </tr>
                                                       <tr>
                                                           <td>
-                                                              <script type="text/javascript">
-                                                                  function agregaSeleccion(origen, destino) {
-                                                                      obj = document.getElementById(origen);
-                                                                      if (obj.selectedIndex == -1)
-                                                                          return;
 
-                                                                      for (i = 0; opt = obj.options[i]; i++)
-                                                                          if (opt.selected) {
-                                                                              valor = opt.value; // almacenar value
-                                                                              txt = obj.options[i].text; // almacenar el texto
-                                                                              obj.options[i] = null; // borrar el item si está seleccionado
-                                                                              obj2 = document.getElementById(destino);
-
-                                                                              opc = new Option(txt, valor,"defaultSelected");
-                                                                              eval(obj2.options[obj2.options.length] = opc);
-                                                                          }
-
-                                                                          var select = document.getElementById('lista_de_accesos');
-
-                                                                          for ( var i = 0, l = select.options.length, o; i < l; i++ )
-                                                                          {
-                                                                            o = select.options[i];
-                                                                              o.selected = true;
-                                                                          }
-                                                                          var select = document.getElementById('elista_de_accesos');
-
-                                                                          for ( var i = 0, l = select.options.length, o; i < l; i++ )
-                                                                          {
-                                                                            o = select.options[i];
-                                                                              o.selected = true;
-                                                                          }
-
-
-                                                                      }
-
-                                                                      function agregaTodo(origen, destino) {
-                                                                          obj = document.getElementById(origen);
-                                                                          obj2 = document.getElementById(destino);
-                                                                          aux = obj.options.length;
-                                                                          for (i = 0; i < aux; i++) {
-                                                                              aux2 = 0;
-                                                                              opt = obj.options[aux2];
-                                                                          valor = opt.value; // almacenar value
-                                                                          txt = obj.options[aux2].text; // almacenar el texto
-                                                                          obj.options[aux2] = null; // borrar el item si está seleccionado
-
-                                                                          opc = new Option(txt, valor,"defaultSelected");
-                                                                          eval(obj2.options[obj2.options.length] = opc);
-                                                                      }
-                                                                      var select = document.getElementById('lista_de_accesos');
-
-                                                                      for ( var i = 0, l = select.options.length, o; i < l; i++ )
-                                                                      {
-                                                                        o = select.options[i];
-                                                                          o.selected = true;
-                                                                      }
-                                                                      var select = document.getElementById('elista_de_accesos');
-
-                                                                      for ( var i = 0, l = select.options.length, o; i < l; i++ )
-                                                                      {
-                                                                        o = select.options[i];
-                                                                          o.selected = true;
-                                                                      }
-                                                                  }
-
-                                                              </script>
                                                           </td>
                                                       </tr>
                                                       <tr>
@@ -227,7 +161,7 @@
                                                       </tr>
                                                       <tr>
                                                           <td>
-                                                              <input type="button" name="quitar todas" value="<<<" title="Quitar todo" onclick="agregaTodo('elista_de_accesos', 'elistaUsuariosDisponibles');">
+                                                              <input type="button" name="quitar todas" value="<<<" title="Quitar todo" >
                                                           </td>
                                                       </tr>
                                                   </tbody></table>
@@ -235,7 +169,7 @@
                                               </td>
 
                                               <td>
-                                                  <select multiple name="elista_de_accesos[]" id="elista_de_accesos"  size="7" style="width: 100%;" onclick="agregaSeleccion('elista_de_accesos', 'elistaUsuariosDisponibles');">
+                                                  <select multiple name="elista_de_accesos[]" id="elista_de_accesos"  size="7" style="width: 100%;" >
 
                                                   </select>
                                               </td>
@@ -269,7 +203,7 @@
 //Funcion para el edit
 
 function Editar(btn){
-  var route = "https://www.isobpm.com/documentada/"+btn.value+"/edit";
+  var route = "/documentada/"+btn.value+"/edit";
 
   $.get(route, function(res){
     $("#enombre").val(res.nombre);
@@ -421,7 +355,7 @@ $(document).ready(function(){
 
   $("#actualizar").click(function(){
     var value = $("#id").val();
-    var route = "https://www.isobpm.com/aprobacion/"+value+"";
+    var route = "/aprobacion/"+value+"";
     var token = $("#token").val();
     var fd = new FormData(document.getElementById("fileinfo"));
 
