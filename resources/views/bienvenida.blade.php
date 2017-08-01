@@ -194,6 +194,26 @@
             </div>
         </div>
 
+        @if(Auth::user()->perfil == 1 or Auth::user()->perfil == 2)
+ <div class="Row">
+   <div class="form-group form-group-lg">
+     <form  action="/cambioempresa/edit" method="post">
+     <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
+       <h2><label for="tipo" class="control-label col-md-12" >Selecciona una empresa:</label></h2>
+       <div class="col-md-6">
+           <select class="form-control input-lg" name="empresa" id= "empresa">
+             <option value="0" selected>Sin Empresa</option>
+             <?php foreach ($empresa as $empresas): ?>
+               <option value="<?=$empresas['id']?>"><?=$empresas['razonSocial']?></option>
+             <?php endforeach ?>
+           </select>
+       </div>
+       <button type="submit" class="btnobjetivo" id="btnEditCli" style="font-family: Arial;">Seleccionar</button>
+     </form>
+   </div>
+ </div>
+@endif
+
 
 
 

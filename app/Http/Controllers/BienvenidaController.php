@@ -87,7 +87,16 @@ class BienvenidaController extends Controller
 
     public function show()
     {
-return View('bienvenida');
+      $usuarios = Auth::user();
+      if($usuarios->perfil == 1){
+        $empresas = new Empresas;
+        $empresa = $empresas->get();
+      }else{
+        $empresas = new Empresas;
+        $empresa = $empresas->where('id_creador',$usuarios->id)->get();
+      }
+
+      return View('bienvenida', compact('empresa'));
     }
 
     /**
