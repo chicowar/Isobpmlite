@@ -27,7 +27,6 @@
                           <th>  <div class="th-inner sortable both">    Perfil  </div></th>
                           <th>  <div class="th-inner sortable both">    Telefono  </div></th>
                           <th>  <div class="th-inner sortable both">    Fecha Alta  </div></th>
-                          <th>  <div class="th-inner sortable both">    Area  </div></th>
 
                           <th>  <div class="th-inner sortable both">    Modificacion  </div></th>
                         </tr>
@@ -51,7 +50,6 @@
                             </td>
                           <td>  <?=$usuarios->telefono?></td>
                           <td>  <?=$usuarios->created_at?></td>
-                          <td>  <?=$usuarios->area?></td>
 
                           <td>
                             <form class="" action="/usuarios/destroy/{{ $usuarios->id }}" method="post">
@@ -136,15 +134,6 @@
                                 <option selected="selected" value="1">Pendiente</option>
                                 <option value="2">Suspendido</option>
                                 <option value="3">Activo</option>
-                            </select>
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-                            <label style="font-weight: bold">Area:</label>
-                            <select class="form-control" id="status" name="id_area" required="">
-                              <option value=""></option>
-                              <?php foreach ($area as $areas): ?>
-                                <option value="<?=$areas['id']?>"><?=$areas['nombre']?></option>
-                              <?php endforeach ?>
                             </select>
                         </div>
                     </div>
@@ -239,18 +228,6 @@
                               <option  selected="selected" value="<?=$status['id']?>"><?=$status['nombre']?></option>
                             @else
                               <option value="<?=$status['id']?>"><?=$status['nombre']?></option>
-                            @endif
-                          <?php endforeach ?>
-                        </select>
-                    </div>
-                    <div class="col-lg-6 col-md-6">
-                        <label style="font-weight: bold">Area:</label>
-                        <select class="form-control" id="id_area" name="id_area">
-                          <?php foreach ($area as $areas): ?>
-                            @if($usuarios->id_area == $areas['id'])
-                              <option  selected="selected" value="<?=$areas['id']?>"><?=$areas['nombre']?></option>
-                            @else
-                              <option value="<?=$areas['id']?>"><?=$areas['nombre']?></option>
                             @endif
                           <?php endforeach ?>
                         </select>

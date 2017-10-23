@@ -164,7 +164,7 @@ class InformaciondocController extends Controller
   public function doceliminar($id)
   {
     $usuarios = Auth::user();
-    $documentos = Documentoseliminados::findorfail($id);
+    $documentos = documentoseliminados::findorfail($id);
 
     if ($usuarios->perfil != 4) {
       $documentos-> delete();

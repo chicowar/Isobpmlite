@@ -287,7 +287,7 @@ class AdministradosController extends Controller
         $Users = Auth::user();
 
         $usuario = DB::table('users')
-        ->join('areas','areas.id','=','users.id_area')
+        ->leftjoin('areas','areas.id','=','users.id_area')
         ->select('users.*','areas.nombre as area')
         ->where('users.id_compania',$Users->id_compania)
         ->where('perfil','!=','1')
@@ -336,7 +336,6 @@ class AdministradosController extends Controller
         //Nunca se llenan
         $usuarios->direccion = '';
         $usuarios->descripcion = '';
-        $usuarios->id_area = $request->input('id_area');
         //Falta agregar el area
         $usuarios->save();
         return redirect('/usuarios');
@@ -384,7 +383,6 @@ class AdministradosController extends Controller
         //Nunca se llenan
         $usuarios->direccion = '';
         $usuarios->descripcion = '';
-        $usuarios->id_area = $request->input('id_area');
         //Falta agregar el area
         $usuarios->save();
         return redirect('/usuarios');
