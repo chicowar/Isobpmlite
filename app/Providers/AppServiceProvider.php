@@ -17,22 +17,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $noticia = new Noticias;
-        $today = date("Y-m-d");
-        $noticias = \DB::table('Noticias')->where('fecha_creacion',$today)->get();
-        //$noticias->where('fecha_creacion','=',$today)->get();
-        $arreglo = compact($noticias);
-        if($noticias!=null)
-        {
-            View::share('noticiasw', $noticias);
-        }
-        else
-        {
-            View::share('noticias', $today);
-        }
-        /*
-
-        */
+      
     }
 
     /**
